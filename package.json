@@ -1,0 +1,17 @@
+{
+  "name": "@pironmind/solidity-patterns",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Design and programming patterns for Solidity (Hardhat v2 toolchain for compiling and scanning examples).",
+  "license": "MIT",
+  "type": "commonjs",
+  "scripts": {
+    "build": "hardhat compile",
+    "clean": "hardhat clean",
+    "semgrep": "semgrep --config p/solidity --error --metrics=off ."
+  },
+  "devDependencies": {
+    "hardhat": "^2.22.2"
+  }
+}
+

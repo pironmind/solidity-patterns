@@ -1,0 +1,9 @@
+# Hardhat
+node_modules/
+cache/
+artifacts/
+
+# OS / tooling
+.DS_Store
+*.log
+

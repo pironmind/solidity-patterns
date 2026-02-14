@@ -1,9 +1,21 @@
 # Solidity Patterns
 
+[![License](https://img.shields.io/github/license/fravoll/solidity-patterns)](LICENSE)
+[![Last commit](https://img.shields.io/github/last-commit/fravoll/solidity-patterns)](https://github.com/fravoll/solidity-patterns/commits/master)
+[![Open issues](https://img.shields.io/github/issues/fravoll/solidity-patterns)](https://github.com/fravoll/solidity-patterns/issues)
+
 This repository contains a collection of design and programming patterns for the smart contract programming language Solidity in version 0.4.20. Note that newer versions might have changed some of the functionalities.
 Each pattern consists of a code sample and a detailed explanation, including background, implications and additional information about the patterns.
 
 Have a look at the documentation site: https://fravoll.github.io/solidity-patterns/
+
+## Security & outdatedness notes
+
+- **Compiler versions are very old**: the examples use Solidity **0.4.19–0.4.22** (`pragma solidity ...`). Solidity 0.4.x is **end-of-life** and is missing many language and safety improvements introduced in later versions.
+- **No dependency manifests in this repo**: there is no `package.json`, `requirements.txt`, etc. That means tools like `npm audit`, `pip-audit`, or Dependabot versioning **can’t report “outdated packages” for this repository**.
+- **What’s “missing” for automated vulnerability detection** (optional improvements):
+  - A reproducible build toolchain (e.g., Hardhat/Foundry + pinned `solc`) so static analyzers can compile contracts reliably.
+  - CI security scanning (Semgrep/Slither) and/or CodeQL workflows to surface findings on PRs.
 
 ## Contents
 
