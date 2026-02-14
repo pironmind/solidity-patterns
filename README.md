@@ -4,18 +4,17 @@
 [![Last commit](https://img.shields.io/github/last-commit/fravoll/solidity-patterns)](https://github.com/fravoll/solidity-patterns/commits/master)
 [![Open issues](https://img.shields.io/github/issues/fravoll/solidity-patterns)](https://github.com/fravoll/solidity-patterns/issues)
 
-This repository contains a collection of design and programming patterns for the smart contract programming language Solidity in version 0.4.20. Note that newer versions might have changed some of the functionalities.
+This repository contains a collection of design and programming patterns for the smart contract programming language Solidity.
 Each pattern consists of a code sample and a detailed explanation, including background, implications and additional information about the patterns.
 
 Have a look at the documentation site: https://fravoll.github.io/solidity-patterns/
 
 ## Security & outdatedness notes
 
-- **Compiler versions are very old**: the examples use Solidity **0.4.19–0.4.22** (`pragma solidity ...`). Solidity 0.4.x is **end-of-life** and is missing many language and safety improvements introduced in later versions.
-- **No dependency manifests in this repo**: there is no `package.json`, `requirements.txt`, etc. That means tools like `npm audit`, `pip-audit`, or Dependabot versioning **can’t report “outdated packages” for this repository**.
+- **Compiler versions**: the examples in this workspace are maintained for Solidity **0.8.28**.
+- **Dependency scanning**: you can use `npm audit` for the Hardhat toolchain dependencies.
 - **What’s “missing” for automated vulnerability detection** (optional improvements):
-  - A reproducible build toolchain (e.g., Hardhat/Foundry + pinned `solc`) so static analyzers can compile contracts reliably.
-  - CI security scanning (Semgrep/Slither) and/or CodeQL workflows to surface findings on PRs.
+  - CI security scanning (e.g., Slither/Semgrep) to surface findings on PRs.
 
 ## Contents
 
@@ -37,7 +36,9 @@ Have a look at the documentation site: https://fravoll.github.io/solidity-patter
   * [**String Equality Comparison**](docs/string_equality_comparison.md): Check for the equality of two provided strings in a way that minimizes average gas consumption for a large number of different inputs.
   * [**Tight Variable Packing**](docs/tight_variable_packing.md): Optimize gas consumption when storing or loading statically-sized variables.
   * [**Memory Array Building**](docs/memory_array_building.md): Aggregate and retrieve data from contract storage in a gas efficient way.
-  
+* **Modern Solidity & EVM Patterns (0.8.x+)**
+  * [**Custom Errors**](docs/custom_errors.md): Use custom errors instead of revert strings for cheaper, structured reverts.
+  * [**Transient Storage (EIP-1153)**](docs/transient_storage.md): Use per-transaction storage for temporary state without persistent `SSTORE` costs.
 
 ## Disclaimer
 

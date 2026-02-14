@@ -25,6 +25,16 @@ Each pattern consists of a code sample and a detailed explanation, including bac
   * [**Tight Variable Packing**](./tight_variable_packing.md): Optimize gas consumption when storing or loading statically-sized variables.
   * [**Memory Array Building**](./memory_array_building.md): Aggregate and retrieve data from contract storage in a gas efficient way.
 
+* **Modern Solidity & EVM Patterns (0.8.x+)**
+  * [**Custom Errors**](./custom_errors.md): Use custom errors instead of revert strings for cheaper, structured reverts.
+  * [**Transient Storage (EIP-1153)**](./transient_storage.md): Use per-transaction storage for temporary state without persistent `SSTORE` costs.
+  * [**Two-step ownership**](./two_step_ownership.md): Propose + accept ownership transfer to avoid accidental ownership loss.
+  * [**RBAC roles**](./rbac_roles.md): Role-based access control for multi-role permissioning.
+  * [**EIP-712 permits**](./eip712_permit.md): Gasless approvals using typed signatures and nonces.
+  * [**Upgradeability (EIP-1967 / UUPS)**](./uups_eip1967.md): Standard proxy slots and UUPS authorization.
+  * [**Oracle (Chainlink feeds)**](./chainlink_oracle.md): Data feeds with staleness/incomplete-round checks.
+  * [**Randomness (VRF)**](./vrf_randomness.md): Verifiable randomness callback pattern.
+
 ## Bibliography
 
 The sources used in this document can be found in this [bibliography](./bibliography.md).

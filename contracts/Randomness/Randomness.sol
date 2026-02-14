@@ -21,7 +21,7 @@ contract Randomness {
         seedSet = true;
     }
 
-    function bet() public {
+    function bet() public view {
         require(!betsClosed);
         // Make bets here
     }

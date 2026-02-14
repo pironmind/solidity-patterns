@@ -1,10 +1,13 @@
+require("@nomiclabs/hardhat-ethers");
+require("@nomicfoundation/hardhat-chai-matchers");
+
 /** @type {import('hardhat/config').HardhatUserConfig} */
 module.exports = {
   // These examples are written for Solidity 0.4.x.
   // Hardhat will download the matching solc version automatically.
   solidity: {
     compilers: [
-      { version: "0.8.28" },
+      { version: "0.8.28", settings: { evmVersion: "prague" } },
     ],
   },
   paths: {

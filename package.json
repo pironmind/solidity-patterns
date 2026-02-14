@@ -8,10 +8,16 @@
   "scripts": {
     "build": "hardhat compile",
     "clean": "hardhat clean",
+    "test": "hardhat test",
     "audit:deps": "npm audit",
     "audit:outdated": "npm outdated || true"
   },
   "devDependencies": {
-    "hardhat": "^2.22.2"
+    "@nomicfoundation/hardhat-chai-matchers": "^1.0.6",
+    "@nomiclabs/hardhat-ethers": "^2.2.3",
+    "chai": "^4.4.1",
+    "ethers": "^5.7.2",
+    "hardhat": "^2.22.2",
+    "mocha": "^10.2.0"
   }
 }
