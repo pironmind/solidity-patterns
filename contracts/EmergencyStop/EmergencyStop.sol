@@ -1,7 +1,8 @@
 // This code has not been professionally audited, therefore I cannot make any promises about
 // safety or correctness. Use at own risk.
 
-pragma solidity ^0.4.21;
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.28;
 
 contract EmergencyStop {
 

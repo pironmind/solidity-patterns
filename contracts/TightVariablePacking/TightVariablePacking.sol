@@ -1,7 +1,8 @@
 // This code has not been professionally audited, therefore I cannot make any promises about
 // safety or correctness. Use at own risk.
 
-pragma solidity ^0.4.20;
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.28;
 
 contract StructPackingExample {
 
@@ -19,7 +20,7 @@ contract StructPackingExample {
     CheapStruct example;
 
     function addCheapStruct() public {
-        CheapStruct memory someStruct = CheapStruct(1,2,3,4,"a","b","c","d");
+        CheapStruct memory someStruct = CheapStruct(1, 2, 3, 4, "a", "b", "c", "d");
         example = someStruct;
     }
 }

@@ -1,15 +1,16 @@
 // This code has not been professionally audited, therefore I cannot make any promises about
 // safety or correctness. Use at own risk.
 
-pragma solidity ^0.4.20;
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.28;
 
 contract GuardCheck {
 
-    function donate(address addr) payable public {
+    function donate(address payable addr) public payable {
         require(addr != address(0));
         require(msg.value != 0);
-        uint balanceBeforeTransfer = this.balance;
-        uint transferAmount;
+        uint256 balanceBeforeTransfer = address(this).balance;
+        uint256 transferAmount;
 
         if (addr.balance == 0) {
             transferAmount = msg.value;
@@ -20,6 +21,6 @@ contract GuardCheck {
         }
 
         addr.transfer(transferAmount);
-        assert(this.balance == balanceBeforeTransfer - transferAmount);
+        assert(address(this).balance == balanceBeforeTransfer - transferAmount);
     }
 }

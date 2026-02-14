@@ -12,35 +12,43 @@
          0x0000000000000000000000000000000000000005
 */
 
-pragma solidity ^0.4.21;
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.28;
 
 contract Proxy {
 
     // The delegate address will be overwritten with the
     // value that was supposed to be stored in n
     address public delegate;
-    uint public n = 1;
+    uint256 public n = 1;
 
-    function Proxy(address _delegateAdr) public {
+    constructor(address _delegateAdr) {
         delegate = _delegateAdr;
     }
 
-    function() external payable {
-
+    fallback() external payable {
         assembly {
             let _target := sload(0)
-            calldatacopy(0x0, 0x0, calldatasize)
-            let result := delegatecall(gas, _target, 0x0, calldatasize, 0x0, 0)
-            returndatacopy(0x0, 0x0, returndatasize)
-            switch result case 0 {revert(0, 0)} default {return (0, returndatasize)}
+            calldatacopy(0x0, 0x0, calldatasize())
+            let result := delegatecall(gas(), _target, 0x0, calldatasize(), 0x0, 0)
+            returndatacopy(0x0, 0x0, returndatasize())
+            switch result
+            case 0 {
+                revert(0, returndatasize())
+            }
+            default {
+                return(0, returndatasize())
+            }
         }
     }
+
+    receive() external payable {}
 }
 
 contract Delegate {
 
     // Storage is not in the same order as in the Proxy contract
-    uint public n = 1;
+    uint256 public n = 1;
 
     function adds() public {
         n = 5;
@@ -51,7 +59,7 @@ contract Caller {
 
     Delegate proxy;
 
-    function Caller(address _proxyAdr) public {
+    constructor(address _proxyAdr) {
         proxy = Delegate(_proxyAdr);
     }
 

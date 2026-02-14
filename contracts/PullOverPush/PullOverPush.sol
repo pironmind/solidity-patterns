@@ -1,24 +1,25 @@
 // This code has not been professionally audited, therefore I cannot make any promises about
 // safety or correctness. Use at own risk.
 
-pragma solidity ^0.4.21;
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.28;
 
 contract PullOverPush {
 
-    mapping(address => uint) credits;
+    mapping(address => uint256) credits;
 
-    function allowForPull(address receiver, uint amount) private {
+    function allowForPull(address receiver, uint256 amount) private {
         credits[receiver] += amount;
     }
 
     function withdrawCredits() public {
-        uint amount = credits[msg.sender];
+        uint256 amount = credits[msg.sender];
 
         require(amount != 0);
         require(address(this).balance >= amount);
 
         credits[msg.sender] = 0;
 
-        msg.sender.transfer(amount);
+        payable(msg.sender).transfer(amount);
     }
 }

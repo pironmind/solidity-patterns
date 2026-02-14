@@ -1,39 +1,41 @@
-pragma solidity ^0.4.19;
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.28;
+
 contract StringEqualityComparisonGasExample {
 
-    function hashCompareInternal(string a, string b) internal returns (bool) {
-        return keccak256(a) == keccak256(b);
+    function hashCompareInternal(string memory a, string memory b) internal pure returns (bool) {
+        return keccak256(bytes(a)) == keccak256(bytes(b));
     }
 
-    function utilCompareInternal(string a, string b) internal returns (bool) {
+    function utilCompareInternal(string memory a, string memory b) internal pure returns (bool) {
         if (bytes(a).length != bytes(b).length) {
             return false;
         }
-        for (uint i = 0; i < bytes(a).length; i ++) {
-            if(bytes(a)[i] != bytes(b)[i]) {
+        for (uint256 i = 0; i < bytes(a).length; i++) {
+            if (bytes(a)[i] != bytes(b)[i]) {
                 return false;
             }
         }
         return true;
     }
 
-    function hashCompareWithLengthCheckInternal(string a, string b) internal returns (bool) {
+    function hashCompareWithLengthCheckInternal(string memory a, string memory b) internal pure returns (bool) {
         if (bytes(a).length != bytes(b).length) {
             return false;
         } else {
-            return keccak256(a) == keccak256(b);
+            return keccak256(bytes(a)) == keccak256(bytes(b));
         }
     }
 
-    function hashCompare(string a, string b) public returns (bool) {
+    function hashCompare(string memory a, string memory b) public pure returns (bool) {
         return hashCompareInternal(a, b);
     }
 
-    function utilCompare(string a, string b) public returns (bool) {
+    function utilCompare(string memory a, string memory b) public pure returns (bool) {
         return utilCompareInternal(a, b);
     }
 
-    function hashCompareWithLengthCheck(string a, string b) public returns (bool) {
+    function hashCompareWithLengthCheck(string memory a, string memory b) public pure returns (bool) {
         return hashCompareWithLengthCheckInternal(a, b);
     }
 }

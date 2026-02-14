@@ -4,10 +4,7 @@ module.exports = {
   // Hardhat will download the matching solc version automatically.
   solidity: {
     compilers: [
-      { version: "0.4.22" },
-      { version: "0.4.21" },
-      { version: "0.4.20" },
-      { version: "0.4.19" },
+      { version: "0.8.28" },
     ],
   },
   paths: {

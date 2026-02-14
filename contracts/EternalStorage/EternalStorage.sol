@@ -1,22 +1,23 @@
 // This code has not been professionally audited, therefore I cannot make any promises about
 // safety or correctness. Use at own risk.
 
-pragma solidity 0.4.21;
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.28;
 
 contract EternalStorage {
 
     address owner = msg.sender;
     address latestVersion;
 
-    mapping(bytes32 => uint) uIntStorage;
+    mapping(bytes32 => uint256) uIntStorage;
     mapping(bytes32 => string) stringStorage;
     mapping(bytes32 => address) addressStorage;
     mapping(bytes32 => bytes) bytesStorage;
     mapping(bytes32 => bool) boolStorage;
-    mapping(bytes32 => int) intStorage;
+    mapping(bytes32 => int256) intStorage;
 
     modifier onlyLatestVersion() {
-       require(msg.sender == latestVersion);
+        require(msg.sender == latestVersion);
         _;
     }
 
@@ -26,77 +27,77 @@ contract EternalStorage {
     }
 
     // *** Getter Methods ***
-    function getUint(bytes32 _key) external view returns(uint) {
+    function getUint(bytes32 _key) external view returns (uint256) {
         return uIntStorage[_key];
     }
 
-    function getString(bytes32 _key) external view returns(string) {
+    function getString(bytes32 _key) external view returns (string memory) {
         return stringStorage[_key];
     }
 
-    function getAddress(bytes32 _key) external view returns(address) {
+    function getAddress(bytes32 _key) external view returns (address) {
         return addressStorage[_key];
     }
 
-    function getBytes(bytes32 _key) external view returns(bytes) {
+    function getBytes(bytes32 _key) external view returns (bytes memory) {
         return bytesStorage[_key];
     }
 
-    function getBool(bytes32 _key) external view returns(bool) {
+    function getBool(bytes32 _key) external view returns (bool) {
         return boolStorage[_key];
     }
 
-    function getInt(bytes32 _key) external view returns(int) {
+    function getInt(bytes32 _key) external view returns (int256) {
         return intStorage[_key];
     }
 
     // *** Setter Methods ***
-    function setUint(bytes32 _key, uint _value) onlyLatestVersion external {
+    function setUint(bytes32 _key, uint256 _value) external onlyLatestVersion {
         uIntStorage[_key] = _value;
     }
 
-    function setString(bytes32 _key, string _value) onlyLatestVersion external {
+    function setString(bytes32 _key, string calldata _value) external onlyLatestVersion {
         stringStorage[_key] = _value;
     }
 
-    function setAddress(bytes32 _key, address _value) onlyLatestVersion external {
+    function setAddress(bytes32 _key, address _value) external onlyLatestVersion {
         addressStorage[_key] = _value;
     }
 
-    function setBytes(bytes32 _key, bytes _value) onlyLatestVersion external {
+    function setBytes(bytes32 _key, bytes calldata _value) external onlyLatestVersion {
         bytesStorage[_key] = _value;
     }
 
-    function setBool(bytes32 _key, bool _value) onlyLatestVersion external {
+    function setBool(bytes32 _key, bool _value) external onlyLatestVersion {
         boolStorage[_key] = _value;
     }
 
-    function setInt(bytes32 _key, int _value) onlyLatestVersion external {
+    function setInt(bytes32 _key, int256 _value) external onlyLatestVersion {
         intStorage[_key] = _value;
     }
 
     // *** Delete Methods ***
-    function deleteUint(bytes32 _key) onlyLatestVersion external {
+    function deleteUint(bytes32 _key) external onlyLatestVersion {
         delete uIntStorage[_key];
     }
 
-    function deleteString(bytes32 _key) onlyLatestVersion external {
+    function deleteString(bytes32 _key) external onlyLatestVersion {
         delete stringStorage[_key];
     }
 
-    function deleteAddress(bytes32 _key) onlyLatestVersion external {
+    function deleteAddress(bytes32 _key) external onlyLatestVersion {
         delete addressStorage[_key];
     }
 
-    function deleteBytes(bytes32 _key) onlyLatestVersion external {
+    function deleteBytes(bytes32 _key) external onlyLatestVersion {
         delete bytesStorage[_key];
     }
 
-    function deleteBool(bytes32 _key) onlyLatestVersion external {
+    function deleteBool(bytes32 _key) external onlyLatestVersion {
         delete boolStorage[_key];
     }
 
-    function deleteInt(bytes32 _key) onlyLatestVersion external {
+    function deleteInt(bytes32 _key) external onlyLatestVersion {
         delete intStorage[_key];
     }
 }

@@ -1,7 +1,8 @@
 // This code has not been professionally audited, therefore I cannot make any promises about
 // safety or correctness. Use at own risk.
 
-pragma solidity ^0.4.20;
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.28;
 
 contract StateMachine {
 
@@ -14,7 +15,7 @@ contract StateMachine {
 
     Stages public stage = Stages.AcceptingBlindBids;
 
-    uint public creationTime = now;
+    uint256 public creationTime = block.timestamp;
 
     modifier atStage(Stages _stage) {
         require(stage == _stage);
@@ -27,10 +28,10 @@ contract StateMachine {
     }
 
     modifier timedTransitions() {
-        if (stage == Stages.AcceptingBlindBids && now >= creationTime + 6 days) {
+        if (stage == Stages.AcceptingBlindBids && block.timestamp >= creationTime + 6 days) {
             nextStage();
         }
-        if (stage == Stages.RevealBids && now >= creationTime + 10 days) {
+        if (stage == Stages.RevealBids && block.timestamp >= creationTime + 10 days) {
             nextStage();
         }
         _;
@@ -53,6 +54,6 @@ contract StateMachine {
     }
 
     function nextStage() internal {
-        stage = Stages(uint(stage) + 1);
+        stage = Stages(uint256(stage) + 1);
     }
 }

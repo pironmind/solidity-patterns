@@ -1,17 +1,18 @@
 // This code contains deliberate errors. Do not use.
 
-pragma solidity ^0.4.21;
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.28;
 
 contract BadAuction {
 
     address highestBidder;
-    uint highestBid;
+    uint256 highestBid;
 
     function bid() public payable {
         require(msg.value >= highestBid);
 
-        if (highestBidder != 0) {
-            highestBidder.transfer(highestBid);
+        if (highestBidder != address(0)) {
+            payable(highestBidder).transfer(highestBid);
         }
 
         highestBidder = msg.sender;
